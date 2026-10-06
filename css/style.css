@@ -80,7 +80,7 @@ section { padding: clamp(72px, 12vw, 160px) var(--gutter); }
 
 /* ===== Corridor (hero background) ===== */
 /* Sits below the headline in normal flow, so the type never overlaps the images. */
-.corridor { position: relative; flex: 1 1 auto; width: 100%; min-height: clamp(260px, 34vw, 560px); container-type: inline-size; overflow: hidden; pointer-events: none; }
+.corridor { position: relative; flex: 1 1 auto; width: 100%; min-height: clamp(260px, 30vw, 520px); container-type: inline-size; overflow: hidden; pointer-events: none; }
 .corridor__stage, .corridor__rails { position: absolute; inset: 0; }
 .corridor__rails { transform-style: preserve-3d; }
 .corridor__card { position: absolute; overflow: hidden; backface-visibility: hidden; background: var(--ink); }
