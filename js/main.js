@@ -23,9 +23,8 @@
   /* ---------- Hero entrance ---------- */
   function initIntro() {
     var tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
-    tl.fromTo('.wordmark span', { yPercent: 105, y: 0 }, { yPercent: 0, y: 0, duration: 1.2, stagger: 0.08 }, 0.1)
-      .fromTo('.hero__fade', { opacity: 0 }, { opacity: 1, duration: 0.9, stagger: 0.12 }, 0.4)
-      .from('.hero__eyebrow, .hero__title', { y: 28, duration: 1, stagger: 0.1 }, 0.4);
+    tl.fromTo('.hero__fade', { opacity: 0 }, { opacity: 1, duration: 0.9, stagger: 0.12 }, 0.1)
+      .from('.hero__eyebrow, .hero__title', { y: 28, duration: 1, stagger: 0.1 }, 0.1);
   }
 
   /* ---------- Word-by-word text reveals ---------- */

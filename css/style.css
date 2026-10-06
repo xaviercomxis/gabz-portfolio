@@ -64,34 +64,27 @@ section { padding: clamp(72px, 12vw, 160px) var(--gutter); }
 
 /* ===== Hero ===== */
 .hero {
-  position: relative; min-height: 100svh; padding-top: 96px; padding-bottom: 0;
-  display: flex; flex-direction: column; justify-content: space-between; overflow: hidden;
+  position: relative; padding-top: 96px; padding-bottom: 28px; overflow: hidden;
+  display: flex; flex-direction: column; align-items: center; text-align: center; gap: 20px;
 }
-.hero__title { font-weight: 400; font-size: clamp(34px, 5.2vw, 84px); line-height: 1.04; letter-spacing: -.02em; max-width: 13em; }
+.hero__title { font-weight: 400; font-size: clamp(32px, 4.8vw, 76px); line-height: 1.04; letter-spacing: -.02em; max-width: 18em; margin: 0 auto; }
 .hero__title .kolta { font-size: 1.15em; line-height: .9; padding: 0 .1em; }
-.hero__eyebrow, .hero__title, .wordmark { position: relative; z-index: 1; }
-.hero__face { z-index: 1; position: absolute; right: var(--gutter); top: 110px; width: clamp(88px, 14vw, 200px); border-radius: 50%; }
+.hero__mascot { width: clamp(64px, 7vw, 104px); height: auto; border-radius: 50%; }
+@media (min-width: 900px) { .hero { min-height: 100svh; } }
 @media (max-width: 359px) {
   .nav { left: 8px; right: 8px; }
   .nav__logo img { height: 38px; }
   .nav__links a { padding: 8px 9px; font-size: 13px; }
   .pill { padding: 14px 20px; font-size: 15px; }
 }
-.wordmark {
-  font-weight: 900; font-size: clamp(110px, 27vw, 520px); line-height: .9; letter-spacing: -.06em;
-  text-align: center; margin: 0 -2vw; padding-bottom: .2em; display: flex; justify-content: center; overflow: hidden;
-}
-.wordmark span { display: inline-block; }
 
 /* ===== Corridor (hero background) ===== */
-.corridor { position: absolute; inset: 0; z-index: 0; container-type: inline-size; overflow: hidden; pointer-events: none; }
+/* Sits below the headline in normal flow, so the type never overlaps the images. */
+.corridor { position: relative; flex: 1 1 auto; width: 100%; min-height: clamp(260px, 34vw, 560px); container-type: inline-size; overflow: hidden; pointer-events: none; }
 .corridor__stage, .corridor__rails { position: absolute; inset: 0; }
 .corridor__rails { transform-style: preserve-3d; }
 .corridor__card { position: absolute; overflow: hidden; backface-visibility: hidden; background: var(--ink); }
 .corridor__card img { width: 100%; height: 100%; object-fit: cover; }
-/* Dim the photos so the cream type keeps contrast over any of them. */
-.corridor__card::after { content: ""; position: absolute; inset: 0; background: rgba(26, 26, 26, .55); }
-.corridor::after { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 60% at 50% 55%, rgba(26, 26, 26, .4), rgba(26, 26, 26, 0) 75%); }
 
 /* ===== Opening ===== */
 .opening__text { font-weight: 700; font-size: clamp(32px, 6vw, 96px); line-height: 1.02; letter-spacing: -.03em; max-width: 14em; }
@@ -146,10 +139,15 @@ section { padding: clamp(72px, 12vw, 160px) var(--gutter); }
 
 /* ===== Motion start states (only when JS + libs are ready) ===== */
 .js .hero__fade { opacity: 0; }
-.js .wordmark span { transform: translateY(105%); }
 .js [data-reveal] .w { display: inline-block; transform: translateY(110%); opacity: 0; }
 .js [data-reveal] .w-wrap { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: .12em; margin-bottom: -.12em; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }
+
+/* ===== Custom cursor (the mascot), fine pointers only ===== */
+html.has-cursor, html.has-cursor * { cursor: none !important; }
+.cursor { position: fixed; z-index: 1000; left: 0; top: 0; width: 46px; height: 46px; margin: -23px 0 0 -23px; border-radius: 50%; pointer-events: none; opacity: 0; transition: opacity .2s, width .2s, height .2s, margin .2s; will-change: transform; }
+.cursor.is-on { opacity: 1; }
+.cursor.is-hover { width: 72px; height: 72px; margin: -36px 0 0 -36px; }
