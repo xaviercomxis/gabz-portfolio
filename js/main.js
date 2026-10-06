@@ -73,6 +73,15 @@
     window.addEventListener('load', function () { ScrollTrigger.refresh(); applyCurrent(); });
   }
 
+  /* ---------- Simple fade-up for blocks with inline markup ---------- */
+  function initFades() {
+    gsap.utils.toArray('[data-fade]').forEach(function (el) {
+      gsap.fromTo(el, { opacity: 0, y: 28 },
+        { opacity: 1, y: 0, duration: 0.9, ease: 'power3.out',
+          scrollTrigger: { trigger: el, start: 'top 90%', once: true } });
+    });
+  }
+
   /* ---------- Image parallax ---------- */
   function initParallax() {
     gsap.utils.toArray('[data-parallax]').forEach(function (img) {
@@ -178,6 +187,7 @@
     initGalleries();
     initCaseThemes();
     initTextReveals();
+    initFades();
     initParallax();
     reloadOnBreakpointChange();
     window.__gabzReady = true;
