@@ -69,7 +69,6 @@ section { padding: clamp(72px, 12vw, 160px) var(--gutter); }
 }
 .hero__title { font-weight: 400; font-size: clamp(32px, 4.8vw, 76px); line-height: 1.04; letter-spacing: -.02em; max-width: 18em; margin: 0 auto; }
 .hero__title .kolta { font-size: 1.15em; line-height: .9; padding: 0 .1em; }
-.hero__mascot { width: clamp(64px, 7vw, 104px); height: auto; border-radius: 50%; }
 @media (min-width: 900px) { .hero { min-height: 100svh; } }
 @media (max-width: 359px) {
   .nav { left: 8px; right: 8px; }
